@@ -6,3 +6,11 @@
 *.csv
 *.json
 *.png
+*.ipynb_checkpoints
+*.env
+*.DS_Store
+*.vscode
+*.idea
+*.egg-info
+.venv
+.envrc
