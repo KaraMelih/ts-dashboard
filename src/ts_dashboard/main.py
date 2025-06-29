@@ -2,11 +2,19 @@ from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from contextlib import asynccontextmanager
+from scripts.fetch_btc_data import populate_db
 
 from .crud import get_price_points  # function returning list of dicts
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan event to populate the database on startup."""
+    # Populate the database with the latest BTC data
+    populate_db()
+    yield
 
+app = FastAPI(lifespan=lifespan)
 # mount static files (Plotly.js)
 app.mount("/static", StaticFiles(directory="src/ts_dashboard/static"), name="static")
 templates = Jinja2Templates(directory="src/ts_dashboard/templates")

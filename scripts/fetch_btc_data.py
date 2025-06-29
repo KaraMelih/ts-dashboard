@@ -42,25 +42,8 @@ def populate_db():
     """Fetches the last 5 days of Bitcoin price data and upserts into the database."""
     price_points = fetch_last_5_days()
     upsert_price_points(price_points)
+    print(f"Updated price points on {datetime.now()}.")
 
-# def main():
-#     # create table if needed
-#     Base.metadata.create_all(engine)
-#     session = Session()
-
-#     for dt, price in fetch_last_5_days():
-#         # upsert: skip if already present
-#         exists = session.query(PricePoint).filter_by(date=dt).first()
-#         if exists:
-#             exists.price = price
-#             print(f"Updated {dt}: {price}")
-#         else:
-#             pp = PricePoint(date=dt, price=price)
-#             session.add(pp)
-#             print(f"Inserted {dt}: {price}")
-#     session.commit()
-#     session.close()
-#     print("Done.")
-
-# if __name__ == "__main__":
-#     main()
+# This script can be run directly to populate the database
+if __name__ == "__main__":
+    populate_db()
