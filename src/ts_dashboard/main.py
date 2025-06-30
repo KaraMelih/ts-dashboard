@@ -3,8 +3,8 @@ from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from contextlib import asynccontextmanager
-from scripts.fetch_btc_data import populate_db
-
+# from scripts.fetch_btc_data import populate_db
+from ts_dashboard import populate_db
 from .crud import get_price_points  # function returning list of dicts
 
 @asynccontextmanager

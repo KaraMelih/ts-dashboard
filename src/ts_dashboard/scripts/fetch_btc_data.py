@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import requests
 from datetime import datetime, UTC
-from ..src.ts_dashboard.crud import upsert_price_points
+
+from ts_dashboard.crud import upsert_price_points
 
 # Configuration
 API_URL = "https://api.coingecko.com/api/v3/coins/bitcoin/market_chart"
@@ -19,7 +20,7 @@ def fetch_last_5_days(currency="usd", days=5, interval="hourly"):
         by default it returns hourly data anyway, so we use that.
 
     """
-    today = datetime.date.today()
+    today = datetime.today()
     # CoinGecko takes days as number; get 5 days back
     params = {"vs_currency": currency, "days": days, } #"interval": interval}
     ## use the default hourly interval for now. It complains.   

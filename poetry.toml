@@ -1,2 +1,5 @@
 [virtualenvs]
 in-project = true
+packages = [
+  { include = "ts_dashboard", from = "src" }
+]

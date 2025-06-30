@@ -1,7 +1,6 @@
 # src/ts_dashboard/db.py
 
-from sqlalchemy import create_engine, Column, Integer, Date, Float, DateTime
-# from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import create_engine, Column, Integer, Float, DateTime
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # 1. Base class for all ORM models
